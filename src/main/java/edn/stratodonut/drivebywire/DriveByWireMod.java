@@ -8,7 +8,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.createmod.catnip.config.ui.BaseConfigScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
@@ -21,7 +21,10 @@ public class DriveByWireMod {
     public DriveByWireMod(final IEventBus modEventBus, final ModContainer modContainer, final Dist dist) {
         modContainer.registerConfig(ModConfig.Type.COMMON, WireConfig.CONFIG_SPEC);
         if (dist == Dist.CLIENT) {
-            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+            BaseConfigScreen.setDefaultActionFor(MOD_ID,
+                screen -> screen.withSpecs(null, WireConfig.CONFIG_SPEC, null));
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class,
+                (container, parent) -> new BaseConfigScreen(parent, MOD_ID));
         }
         WireBlocks.register(modEventBus);
         WireBlockEntities.register(modEventBus);
