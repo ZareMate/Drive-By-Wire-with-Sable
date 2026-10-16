@@ -21,7 +21,7 @@ public class WireConfig {
             .defineInRange("maxSourcesPerStructure", 64, 0, Integer.MAX_VALUE);
         maxSourcesInWorld = builder
             .comment("Maximum wire source blocks outside Sable sublevels, per dimension. 0 disables new world sources.")
-            .defineInRange("maxSourcesInWorld", 64, 0, Integer.MAX_VALUE);
+            .defineInRange("maxSourcesInWorld", 4096, 0, Integer.MAX_VALUE);
         maxSinksPerSource = builder
             .comment("Maximum sink connections per source channel. 0 disables new connections.")
             .defineInRange("maxSinksPerSource", 64, 0, Integer.MAX_VALUE);

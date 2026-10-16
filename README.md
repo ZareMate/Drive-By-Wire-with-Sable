@@ -21,7 +21,7 @@ Available limits:
 
 - `maxSourcesPerStructure`: source blocks per Sable sublevel (default: 64).
 - `maxSourcesInWorld`: source blocks outside Sable sublevels, counted separately
-  for each dimension (default: 64).
+  for each dimension (default: 4096).
 - `maxSinksPerSource`: sink connections per source **channel** (default: 64).
 
 Values must be nonnegative integers; 0 prevents new sources or connections in
